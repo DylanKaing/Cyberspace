@@ -5,24 +5,30 @@ import com.example.resourceServer.repository.PostRepository;
 import com.example.resourceServer.service.KeyService;
 import com.example.resourceServer.service.RequestSequenceService;
 import com.example.resourceServer.util.TokenVerificationService;
+
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.annotation.PostConstruct;
 import java.nio.ByteBuffer;
+
 import java.security.Security;
 import java.security.Signature;
+
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 @RestController
 public class MyController {
 
