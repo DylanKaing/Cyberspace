@@ -1,7 +1,6 @@
 package com.example.resourceServer;
 
 import com.example.resourceServer.entity.Post;
-import com.example.resourceServer.entity.EncryptedObject;
 import com.example.resourceServer.repository.PostRepository;
 import com.example.resourceServer.service.KeyService;
 import com.example.resourceServer.service.RequestSequenceService;
