@@ -65,14 +65,6 @@ public class MyController {
     public ResponseEntity<Map<String, String>> getServerIdentity() {
         try {
             String rsaPublicKey = keyService.getServerRSAPublicKeyPEM();
-            // String fingerprint = keyService.calculateFingerprint(rsaPublicKey);
-            // tokenVerificationService.setFingerPrint(fingerprint);
-
-//            if(resourceFingerPrint.length() == 0){
-//                resourceFingerPrint = fingerprint;
-//            }
-            // String fingerprint = keyService.calculateFingerprint(rsaPublicKey);
-            // tokenVerificationService.setFingerPrint(fingerprint);
 
             Map<String, String> response = new HashMap<>();
             response.put("publicKey", rsaPublicKey);
@@ -211,32 +203,8 @@ public class MyController {
                 logger.info("step 6");
                 // Step 6: Create and save post
 
-                ObjectMapper mapper = new ObjectMapper();
-            
-                // Extract the encrypted title and content objects
-                // EncryptedObject titleObj = mapper.readValue(
-                //     mapper.writeValueAsString(rDetails.get("title")), 
-                //     EncryptedObject.class
-                // );
-                
-                // EncryptedObject contentObj = mapper.readValue(
-                //     mapper.writeValueAsString(rDetails.get("content")), 
-                //     EncryptedObject.class
-                // );
-
-                // Create new post with serialized encrypted objects
-                // Post newPost = new Post();
-                // newPost.setTitleObject(titleObj);
-                // newPost.setContentObject(contentObj);
-                // newPost.setUser(requestDetails.get("user"));
-                // newPost.setVIP(Boolean.parseBoolean(requestDetails.get("isVIP")));
-                // newPost.setGroup(requestDetails.get("groupName"));
-                // newPost.setUserId(Long.parseLong(requestDetails.get("userID")));
-                // newPost.setVersion(Long.parseLong(requestDetails.get("version")));
-
                 Post newPost = new Post(content,user,isVIP,title,groupName,userID,version);
 
-                // Post newPost = new Post(content, user, isVIP, title, groupName, userID, version);
                 postRepository.save(newPost);
 
                 Map<String, Object> response = new HashMap<>();
@@ -328,22 +296,6 @@ public class MyController {
                     filteredPosts = allPosts;
                 }
 
-                // // Convert posts to a format where title and content are objects
-                // List<Map<String, Object>> postsWithObjects = filteredPosts.stream()
-                // .map(post -> {
-                //     Map<String, Object> postMap = new HashMap<>();
-                //     postMap.put("postID", post.getPostID());
-                //     postMap.put("title", post.getTitleObject());
-                //     postMap.put("content", post.getContentObject());
-                //     postMap.put("user", post.getUser());
-                //     postMap.put("isVIP", post.isVIP());
-                //     postMap.put("groupName", post.getGroupName());
-                //     postMap.put("userID", post.getUserId());
-                //     postMap.put("version", post.getVersion());
-                //     return postMap;
-                // })
-                // .collect(Collectors.toList());
-
                 // Encrypt the filtered posts
                 Map<String, String> encryptedResponse = keyService.encrypt(
                     new ObjectMapper().writeValueAsString(filteredPosts)
@@ -371,18 +323,11 @@ public class MyController {
     public CompletableFuture<ResponseEntity<String>> getNormalPosts(@RequestBody Map<String, Object> rDetails) {
         return CompletableFuture.supplyAsync(() -> {
 
-            // Object titleObj = requestDetails.get("title");
             Map<String, String> requestDetails = convertToStringMap(rDetails);
-            // String testHolder = titleObj != null ? titleObj.toString() : null;
             String testHolder = requestDetails.get("title");
 
             logger.info("Printing the title string:" + testHolder);
 
-            // List<Post> normalPosts = postRepository.findByIsVIPFalse();
-            // if (normalPosts.isEmpty()) {
-            //     return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-            // }
-            // return ResponseEntity.ok(normalPosts);
             return ResponseEntity.ok("WORKS");
         }, executorService);
     }
