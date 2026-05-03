@@ -9,7 +9,6 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -451,7 +450,6 @@ public class MyController {
         }, executorService);
     }
 
-    @Transactional
     @DeleteMapping("/deleteUserPosts")
     public CompletableFuture<ResponseEntity<Map<String,Object>>> deleteUserPosts(@RequestBody Map<String, String> details) {
         return CompletableFuture.supplyAsync(() -> {
