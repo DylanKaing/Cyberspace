@@ -10,8 +10,11 @@ require('dotenv').config();
 let resourceLocation = 2
 let authLocation = 3
 
-const resourceServerBaseUrl = `http://acns-0${resourceLocation}.cs.pitt.edu:4064`;
-const authServerBaseUrl = `http://acns-0${authLocation}.cs.pitt.edu:8064`;
+// const resourceServerBaseUrl = `http://acns-0${resourceLocation}.cs.pitt.edu:4064`;
+// const authServerBaseUrl = `http://acns-0${authLocation}.cs.pitt.edu:8064`;
+
+const resourceServerBaseUrl = `http://localhost:4064`;
+const authServerBaseUrl = `http://localhost:8064`;
 
 // Global variables for keys
 let privateKey, publicKey;

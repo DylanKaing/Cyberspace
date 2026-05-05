@@ -107,38 +107,38 @@ public class Post {
 
 
     // Add methods to handle encrypted objects
-    @JsonIgnore
-    public EncryptedObject getTitleObject() {
-        try {
-            return new ObjectMapper().readValue(this.title, EncryptedObject.class);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException("Error deserializing title object", e);
-        }
-    }
+    // @JsonIgnore
+    // public EncryptedObject getTitleObject() {
+    //     try {
+    //         return new ObjectMapper().readValue(this.title, EncryptedObject.class);
+    //     } catch (JsonProcessingException e) {
+    //         throw new RuntimeException("Error deserializing title object", e);
+    //     }
+    // }
 
-    public void setTitleObject(EncryptedObject titleObj) {
-        try {
-            this.title = new ObjectMapper().writeValueAsString(titleObj);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException("Error serializing title object", e);
-        }
-    }
+    // public void setTitleObject(EncryptedObject titleObj) {
+    //     try {
+    //         this.title = new ObjectMapper().writeValueAsString(titleObj);
+    //     } catch (JsonProcessingException e) {
+    //         throw new RuntimeException("Error serializing title object", e);
+    //     }
+    // }
 
-    @JsonIgnore
-    public EncryptedObject getContentObject() {
-        try {
-            return new ObjectMapper().readValue(this.content, EncryptedObject.class);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException("Error deserializing content object", e);
-        }
-    }
+    // @JsonIgnore
+    // public EncryptedObject getContentObject() {
+    //     try {
+    //         return new ObjectMapper().readValue(this.content, EncryptedObject.class);
+    //     } catch (JsonProcessingException e) {
+    //         throw new RuntimeException("Error deserializing content object", e);
+    //     }
+    // }
 
-    public void setContentObject(EncryptedObject contentObj) {
-        try {
-            this.content = new ObjectMapper().writeValueAsString(contentObj);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException("Error serializing content object", e);
-        }
-    }
+    // public void setContentObject(EncryptedObject contentObj) {
+    //     try {
+    //         this.content = new ObjectMapper().writeValueAsString(contentObj);
+    //     } catch (JsonProcessingException e) {
+    //         throw new RuntimeException("Error serializing content object", e);
+    //     }
+    // }
 
 }
